@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: ProjectMasonCasey4
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: Mason
+Implementation-Vendor-Id: MasonCasey
+Build-Jdk: 1.8.0_151
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/ProjectMasonCasey4
+Created-By: Maven Integration for Eclipse
+
