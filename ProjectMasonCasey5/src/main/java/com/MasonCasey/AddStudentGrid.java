@@ -3,7 +3,6 @@ package com.MasonCasey;
 import java.util.Set;
 
 import com.MasonCasey.student.Student;
-import com.MasonCasey.student.StudentList;
 import com.vaadin.event.selection.MultiSelectionEvent;
 import com.vaadin.sass.internal.selector.SelectorSet;
 import com.vaadin.server.VaadinRequest;
@@ -67,7 +66,7 @@ public class AddStudentGrid extends UI {
         	tf2.clear();
         	tf3.clear();
         });
-    	
+  
         tf.addValueChangeListener(event -> { //Enter First Name 
         	String firstName = event.getValue();
         	student1.setFirst(firstName);
