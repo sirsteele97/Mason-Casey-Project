@@ -19,7 +19,7 @@ public class CreateAccount extends UI {
 	vertical.addComponent(new TextField("First Name"));
 	vertical.addComponent(new TextField("Last Name"));
 	vertical.addComponent(new TextField("College Email"));
-	vertical.addComponent(new Button("Submit"));
+	vertical.addComponent(new Button("Submit!"));
 	
 	setContent(vertical);
 	
