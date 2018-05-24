@@ -1,7 +1,6 @@
 package com.MasonCasey;
 
 import com.MasonCasey.student.Student;
-import com.MasonCasey.student.StudentList;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.Button;

@@ -18,11 +18,12 @@ public class Student {
 	} 
 	
 	public Student(){
-		setFirst("first");
-		setLast("last");
-		setEmail("email");
+		setFirst("");
+		setLast("");
+		setEmail("");
 		
 	}
+	
 
 	public String getFirst() {
 		return first;
@@ -53,9 +54,7 @@ public class Student {
 	}
 	
 	public void set() throws Exception {
-		StudentDB.postFirst(this.first);
-		StudentDB.postLast(this.last);
-		StudentDB.postEmail(this.email);
+		StudentDB.postStudent(this.first, this.last, this.email);
 
 	}
 }

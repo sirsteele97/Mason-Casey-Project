@@ -11,7 +11,7 @@ public class StudentDB {
 	public static void createStudentTable() throws Exception{
 		try {
 			Connection con = Init.getConnection();
-			PreparedStatement create = con.prepareStatement("CREATE TABLE IF NOT EXISTS StudentAccounts(id int NOT NULL AUTO_INCREMENT, first varchar(255), last varchar(255),email varchar(255),college varchar(255), PRIMARY KEY(id))"
+			PreparedStatement create = con.prepareStatement("CREATE TABLE IF NOT EXISTS students(id int NOT NULL AUTO_INCREMENT, first varchar(255), last varchar(255),email varchar(255),college varchar(255), PRIMARY KEY(id))"
 );
 			create.executeUpdate();
 		} catch(Exception e) {System.out.println(e);}
@@ -24,7 +24,7 @@ public class StudentDB {
 		try {
 			
 			Connection con = Init.getConnection();
-			PreparedStatement posted = con.prepareStatement("INSERT INTO StudentAccounts(first) VALUES ('"+ var1+"')");
+			PreparedStatement posted = con.prepareStatement("INSERT INTO students(first) VALUES ('"+ var1+"')");
 			posted.executeUpdate();		
 		} catch(Exception e) {System.out.println(e);}
 		finally {
@@ -38,7 +38,7 @@ public class StudentDB {
 		try {
 			
 			Connection con = Init.getConnection();
-			PreparedStatement posted = con.prepareStatement("INSERT INTO StudentAccounts(last) VALUES ('"+ var1+"')");
+			PreparedStatement posted = con.prepareStatement("INSERT INTO students(last) VALUES ('"+ var1+"')");
 			posted.executeUpdate();		
 		} catch(Exception e) {System.out.println(e);}
 		finally {
@@ -52,7 +52,7 @@ public class StudentDB {
 		try {
 			
 			Connection con = Init.getConnection();
-			PreparedStatement posted = con.prepareStatement("INSERT INTO StudentAccounts(email) VALUES ('"+ var1+"')");
+			PreparedStatement posted = con.prepareStatement("INSERT INTO students(email) VALUES ('"+ var1+"')");
 			posted.executeUpdate();		
 		} catch(Exception e) {System.out.println(e);}
 		finally {
@@ -66,7 +66,22 @@ public class StudentDB {
 		try {
 			
 			Connection con = Init.getConnection();
-			PreparedStatement posted = con.prepareStatement("INSERT INTO StudentAccounts(college) VALUES ('"+ var1+"')");
+			PreparedStatement posted = con.prepareStatement("INSERT INTO students(college) VALUES ('"+ var1+"')");
+			posted.executeUpdate();		
+		} catch(Exception e) {System.out.println(e);}
+		finally {
+			System.out.println("INSERT COMPLETED!");
+		}
+	}
+	
+	public static void postStudent(String v1, String v2, String v3) throws Exception{
+		final String var1 = v1;
+		final String var2 = v2;
+		final String var3 = v3;
+		try {
+			
+			Connection con = Init.getConnection();
+			PreparedStatement posted = con.prepareStatement("INSERT INTO students(first,last,email) VALUES ('"+var1+"','"+var2+"','"+var3+"')");
 			posted.executeUpdate();		
 		} catch(Exception e) {System.out.println(e);}
 		finally {
@@ -80,7 +95,7 @@ public class StudentDB {
 			
 			String var1 = type;
 			Connection con = Init.getConnection();
-			PreparedStatement statement = con.prepareStatement("SELECT '"+var1+"' FROM StudentAccounts");
+			PreparedStatement statement = con.prepareStatement("SELECT '"+var1+"' FROM students");
 			
 			ResultSet result = statement.executeQuery();
 			
