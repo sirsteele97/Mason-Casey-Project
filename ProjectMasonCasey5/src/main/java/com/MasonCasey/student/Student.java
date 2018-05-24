@@ -1,5 +1,7 @@
 package com.MasonCasey.student;
 
+import com.MasonCasey.Database.StudentDB;
+
 public class Student {
 
 	private String first; 
@@ -48,5 +50,12 @@ public class Student {
 	
 	public String toString() {
 		return "(" + this.getFirst() + ", " + this.getLast() + ", " + this.getEmail() + ")";
+	}
+	
+	public void set() throws Exception {
+		StudentDB.postFirst(this.first);
+		StudentDB.postLast(this.last);
+		StudentDB.postEmail(this.email);
+
 	}
 }
