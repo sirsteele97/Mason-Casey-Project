@@ -18,6 +18,7 @@ import com.vaadin.ui.UI;
 import com.vaadin.ui.components.grid.MultiSelectionModel;
 import com.vaadin.ui.components.grid.SingleSelectionModel;
 
+/*
 
 @SpringUI
 public class AddStudentGrid extends UI {
@@ -98,3 +99,4 @@ public class AddStudentGrid extends UI {
     
 
 }
+*/
