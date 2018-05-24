@@ -6,6 +6,7 @@ public class Student {
 	private String last; 
 	private String email; 
 	
+	
 	public Student(String first, String last, String email){
 		
 		setFirst(first);
