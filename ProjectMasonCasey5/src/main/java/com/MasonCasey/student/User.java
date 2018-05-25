@@ -1,5 +1,9 @@
 package com.MasonCasey.student;
 
+import java.util.ArrayList;
+
+import com.MasonCasey.Database.StudentDB;
+
 public class User {
 	private String username;
 	private String password;
@@ -40,4 +44,6 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+
 }

@@ -67,7 +67,7 @@ public class CreateAccount extends UI {
     
     submitButton.addClickListener(clickEvent -> { //Adds new users 
     	try {
-			student1.set();
+
 		} catch (Exception e) {
 			
 			System.out.println(e);
