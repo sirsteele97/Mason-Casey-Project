@@ -115,12 +115,28 @@ public class StudentDB {
 			ArrayList<String> array = new ArrayList<String>();
 			while(result.next()) {
 
-				array.add(result.getString("'var1'"));
+				array.add(result.getString(var1));
 			}
 			System.out.println("All records have been selected");
 			return array;
 		} catch (Exception e) {System.out.println(e);}
 		return null;
+	}
+	
+	//returns the id number *TEST*
+	public static int getId(String username) throws Exception{
+		int num = 0;
+		try {
+			String var1 = username;
+			Connection con = Init.getConnection();
+			PreparedStatement statement = con.prepareStatement("SELECT id FROM students WHERE username = '"+var1+"'");
+			ResultSet result = statement.executeQuery();
+			num = result.getInt(1);
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		return num;
 	}
 
 

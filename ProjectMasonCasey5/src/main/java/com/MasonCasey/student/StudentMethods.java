@@ -7,7 +7,7 @@ import com.MasonCasey.Database.StudentDB;
 public class StudentMethods {
 
 	
-	public boolean userNameExists(String user) {
+	public static boolean userNameExists(String user) {
 		
 		ArrayList<String> userList = new ArrayList<>();
 		try {
@@ -17,7 +17,12 @@ public class StudentMethods {
 		}  catch(Exception e) {System.out.println(e);}
 		System.out.println("Returned List...");
 		 
-		return userList.contains(user);
+		return !userList.contains(user);
 		
+	}
+	
+	//checks to ensure college email
+	public static boolean checkEmailCollege(String email) {			
+		return email.endsWith(".edu");
 	}
 }

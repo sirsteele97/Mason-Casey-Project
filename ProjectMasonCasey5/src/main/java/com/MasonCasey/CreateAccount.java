@@ -1,6 +1,8 @@
 package com.MasonCasey;
 
+import com.MasonCasey.Database.StudentDB;
 import com.MasonCasey.student.Student;
+import com.MasonCasey.student.StudentMethods;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.Alignment;
@@ -64,22 +66,35 @@ public class CreateAccount extends UI {
     	student1.setEmail(email);
     });
     
+    user.addValueChangeListener(event -> { //Enter email address
+    	String user1 = event.getValue();
+    	student1.setUsername(user1);
+    });
+    
+    password.addValueChangeListener(event -> { //Enter email address
+    	String pass = event.getValue();
+    	student1.setPassword(pass);
+    });
+    
     
     submitButton.addClickListener(clickEvent -> { //Adds new users 
-    	try {
-
-		} catch (Exception e) {
-			
-			System.out.println(e);
-		}
-    	Notification.show("SET");
-    });
-	
-	
-	
-	}
-
+    	if(StudentMethods.userNameExists(student1.getUsername())) {
+    		
+	    	try {
+	    		StudentDB.postStudent(student1);
+			} catch (Exception e) {
+				
+				System.out.println(e);
+			}
+	    	Notification.show("SET");
+    		
+		}else {
+			Notification.show("Username Taken");
 		
+		}
+	
+		});
+	}
 }
 		
 	
