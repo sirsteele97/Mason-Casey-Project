@@ -4,9 +4,11 @@ import com.MasonCasey.Database.StudentDB;
 
 public class Student {
 
+	
 	private String first; 
 	private String last; 
-	private String email; 
+	private String email;
+	private Object User; 
 	
 	
 	public Student(String first, String last, String email){
@@ -57,4 +59,5 @@ public class Student {
 		StudentDB.postStudent(this.first, this.last, this.email);
 
 	}
+	
 }
