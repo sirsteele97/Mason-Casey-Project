@@ -5,7 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import org.hibernate.annotations.Parameter;
+
+import com.MasonCasey.student.Student;
+import com.MasonCasey.student.User;
+
 public class StudentDB {
+	
 	
 	//creates a student table if none
 	public static void createStudentTable() throws Exception{
@@ -18,70 +24,77 @@ public class StudentDB {
 		finally {System.out.println("fUNCTION COMPLETE.");}
 	}
 	
-	//posts first name to database
-	public static void postFirst(String name) throws Exception{
+	//updates first name to database in id location x
+	public static void updateFirst(String name, String loc) throws Exception{
 		final String var1 = name;
+		final String var2 = loc;
 		try {
 			
 			Connection con = Init.getConnection();
-			PreparedStatement posted = con.prepareStatement("INSERT INTO students(first) VALUES ('"+ var1+"')");
+			PreparedStatement posted = con.prepareStatement("UPDATE students SET first = '"+var1+"' WHERE id = '"+var2+"';");
 			posted.executeUpdate();		
 		} catch(Exception e) {System.out.println(e);}
 		finally {
-			System.out.println("INSERT COMPLETED!");
+			System.out.println("UPDATE COMPLETED!");
 		}
 	}
 	
-	//posts last name to database
-	public static void postLast(String name) throws Exception{
+	//updates first last to database in id location x
+	public static void updateLast(String name, String loc) throws Exception{
 		final String var1 = name;
+		final String var2 = loc;
 		try {
 			
 			Connection con = Init.getConnection();
-			PreparedStatement posted = con.prepareStatement("INSERT INTO students(last) VALUES ('"+ var1+"')");
+			PreparedStatement posted = con.prepareStatement("UPDATE students SET last = '"+var1+"' WHERE id = '"+var2+"';");
 			posted.executeUpdate();		
 		} catch(Exception e) {System.out.println(e);}
 		finally {
-			System.out.println("INSERT COMPLETED!");
+			System.out.println("UPDATE COMPLETED!");
 		}
 	}
 	
-	//posts email name to database
-	public static void postEmail(String name) throws Exception{
+	//updates first email to database in id location x
+	public static void updateEmail(String name, String loc) throws Exception{
 		final String var1 = name;
+		final String var2 = loc;
 		try {
 			
 			Connection con = Init.getConnection();
-			PreparedStatement posted = con.prepareStatement("INSERT INTO students(email) VALUES ('"+ var1+"')");
+			PreparedStatement posted = con.prepareStatement("UPDATE students SET email = '"+var1+"' WHERE id = '"+var2+"';");
 			posted.executeUpdate();		
 		} catch(Exception e) {System.out.println(e);}
 		finally {
-			System.out.println("INSERT COMPLETED!");
+			System.out.println("UPDATE COMPLETED!");
 		}
 	}
 	
-	//posts college name to database
-	public static void postCollege(String name) throws Exception{
+	//updates first college to database in id location x
+	public static void updateCollege(String name, String loc) throws Exception{
 		final String var1 = name;
+		final String var2 = loc;
 		try {
 			
 			Connection con = Init.getConnection();
-			PreparedStatement posted = con.prepareStatement("INSERT INTO students(college) VALUES ('"+ var1+"')");
+			PreparedStatement posted = con.prepareStatement("UPDATE students SET college = '"+var1+"' WHERE id = '"+var2+"';");
 			posted.executeUpdate();		
 		} catch(Exception e) {System.out.println(e);}
 		finally {
-			System.out.println("INSERT COMPLETED!");
+			System.out.println("UPDATE COMPLETED!");
 		}
 	}
 	
-	public static void postStudent(String v1, String v2, String v3) throws Exception{
-		final String var1 = v1;
-		final String var2 = v2;
-		final String var3 = v3;
+	public static void postStudent(Student std) throws Exception{
+		final String var1 = std.getFirst();
+		final String var2 = std.getLast();
+		final String var3 = std.getEmail();
+		final String var4 = std.getUsername();
+		final String var5 = std.getPassword();
 		try {
 			
 			Connection con = Init.getConnection();
-			PreparedStatement posted = con.prepareStatement("INSERT INTO students(first,last,email) VALUES ('"+var1+"','"+var2+"','"+var3+"')");
+			PreparedStatement posted = con.prepareStatement("INSERT INTO students(first,last,email,Username, Password)"
+					+ " VALUES ('"+var1+"','"+var2+"','"+var3+"','"+var4+"','"+var5+"')");
 			posted.executeUpdate();		
 		} catch(Exception e) {System.out.println(e);}
 		finally {
@@ -109,5 +122,6 @@ public class StudentDB {
 		} catch (Exception e) {System.out.println(e);}
 		return null;
 	}
+
 
 }
