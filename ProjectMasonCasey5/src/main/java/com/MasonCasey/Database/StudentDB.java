@@ -108,13 +108,16 @@ public class StudentDB {
 			
 			String var1 = type;
 			Connection con = Init.getConnection();
-			PreparedStatement statement = con.prepareStatement("SELECT '"+var1+"' FROM students");
+			PreparedStatement statement = con.prepareStatement("SELECT "+var1+" FROM students");
 			
 			ResultSet result = statement.executeQuery();
 			
 			ArrayList<String> array = new ArrayList<String>();
 			while(result.next()) {
-
+				
+				System.out.print(result.getString(var1));
+				System.out.print(" ");
+				
 				array.add(result.getString(var1));
 			}
 			System.out.println("All records have been selected");

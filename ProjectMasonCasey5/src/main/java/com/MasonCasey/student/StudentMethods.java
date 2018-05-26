@@ -12,7 +12,7 @@ public class StudentMethods {
 		ArrayList<String> userList = new ArrayList<>();
 		try {
 			
-			userList = StudentDB.getType("username");
+			userList = StudentDB.getType("UserName");
 			
 		}  catch(Exception e) {System.out.println(e);}
 		System.out.println("Returned List...");
