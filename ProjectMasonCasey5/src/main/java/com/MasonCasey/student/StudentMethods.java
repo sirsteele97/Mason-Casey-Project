@@ -21,8 +21,36 @@ public class StudentMethods {
 		
 	}
 	
+	public static boolean checkUsernameSize(String user) {
+		boolean isTrue = false;
+		if(user.length() > 7) {
+			isTrue = true;
+		}else {
+			isTrue = false;
+		}
+		
+		return isTrue;
+	}
+	
+
+	
+	
 	//checks to ensure college email
 	public static boolean checkEmailCollege(String email) {			
 		return email.endsWith(".edu");
+	}
+	
+	public static boolean checkEmailExists(String email) {
+		
+		ArrayList<String> emailList = new ArrayList<>();
+		try {
+			
+			emailList = StudentDB.getType("email");
+			
+		}  catch(Exception e) {System.out.println(e);}
+		System.out.println("Returned List...");
+		 
+		return !emailList.contains(email);
+		
 	}
 }
