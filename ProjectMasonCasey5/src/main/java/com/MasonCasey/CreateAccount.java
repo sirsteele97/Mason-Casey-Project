@@ -1,8 +1,8 @@
 package com.MasonCasey;
 
 import com.MasonCasey.Database.StudentDB;
+import com.MasonCasey.student.AccountChecks;
 import com.MasonCasey.student.Student;
-import com.MasonCasey.student.StudentMethods;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.Alignment;
@@ -78,7 +78,7 @@ public class CreateAccount extends UI {
     
     
     submitButton.addClickListener(clickEvent -> { //Adds new users 
-    	if(StudentMethods.userNameExists(student1.getUsername())) {
+    	if(AccountChecks.userNameExists(student1.getUsername())) {
     		
 	    	try {
 	    		StudentDB.postStudent(student1);

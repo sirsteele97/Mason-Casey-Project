@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import com.MasonCasey.Database.StudentDB;
 
-public class StudentMethods {
+public class AccountChecks {
 
 	
 	public static boolean userNameExists(String user) {
@@ -23,7 +23,7 @@ public class StudentMethods {
 	
 	public static boolean checkUsernameSize(String user) {
 		boolean isTrue = false;
-		if(user.length() > 7) {
+		if(user.length() > 5 && user.length() < 20) {
 			isTrue = true;
 		}else {
 			isTrue = false;
@@ -32,7 +32,16 @@ public class StudentMethods {
 		return isTrue;
 	}
 	
-
+	public static boolean checkPasswordSize(String pass) {
+		boolean isTrue = false;
+		if(pass.length() > 7 && pass.length() < 20) {
+			isTrue = true;
+		}else {
+			isTrue = false;
+		}
+		
+		return isTrue;
+	}
 	
 	
 	//checks to ensure college email
@@ -53,4 +62,5 @@ public class StudentMethods {
 		return !emailList.contains(email);
 		
 	}
+	
 }
