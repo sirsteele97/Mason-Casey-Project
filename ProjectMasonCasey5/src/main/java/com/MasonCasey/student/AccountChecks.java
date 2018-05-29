@@ -34,7 +34,7 @@ public class AccountChecks {
 	
 	public static boolean checkPasswordSize(String pass) {
 		boolean isTrue = false;
-		if(pass.length() > 7 && pass.length() < 20) {
+		if(pass.length() > 6 && pass.length() < 20) {
 			isTrue = true;
 		}else {
 			isTrue = false;
