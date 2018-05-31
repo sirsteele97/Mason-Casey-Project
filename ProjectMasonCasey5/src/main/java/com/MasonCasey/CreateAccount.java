@@ -3,23 +3,22 @@ package com.MasonCasey;
 import com.MasonCasey.Database.StudentDB;
 import com.MasonCasey.student.AccountChecks;
 import com.MasonCasey.student.Student;
+import com.vaadin.navigator.Navigator;
+import com.vaadin.navigator.View;
 import com.vaadin.server.VaadinRequest;
-import com.vaadin.shared.ui.ContentMode;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
-import com.vaadin.ui.Label;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
-import com.vaadin.ui.Window;
 
 
 @SpringUI(path="/login")
-public class CreateAccount extends UI {
-	
+public class CreateAccount extends UI{
+
 	
 	protected void init(VaadinRequest vaadinRequest) {
 		
@@ -56,6 +55,8 @@ public class CreateAccount extends UI {
 	
     setContent(vertical);
     
+    final Navigator navigator = new Navigator(this, vertical);
+    navigator.addView("CollegeInfo", CreateAccount2.class);
 	
 	
 	Student student1 = new Student();	
@@ -101,7 +102,7 @@ public class CreateAccount extends UI {
 			checked = false;
 		}
     	
-    	if(!AccountChecks.checkEmailExists(student1.getEmail()) &&
+    	if(!AccountChecks.checkEmailExists(student1.getEmail()) ||
 				!AccountChecks.checkEmailCollege(student1.getEmail())){
     		Notification.show("Use another Email Address");
 	    	checked = false;
@@ -115,11 +116,13 @@ public class CreateAccount extends UI {
     	if(checked) {
     		try {
 	    		StudentDB.postStudent(student1);
+	    		
 			} catch (Exception e) {
 				
 				System.out.println(e);
 			}
 	    	Notification.show("SET");
+	    	navigator.navigateTo("collegeInfo");
     	}
 		});
 	}

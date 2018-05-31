@@ -45,7 +45,8 @@ public class AccountChecks {
 	
 	
 	//checks to ensure college email
-	public static boolean checkEmailCollege(String email) {			
+	public static boolean checkEmailCollege(String email) {	
+		
 		return email.endsWith(".edu");
 	}
 	

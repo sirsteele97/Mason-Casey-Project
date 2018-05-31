@@ -84,6 +84,38 @@ public class StudentDB {
 		}
 	}
 	
+	//updates first college to database in id location x
+	public static void updateGrad(String name, String loc) throws Exception{
+		final String var1 = name;
+		final String var2 = loc;
+		try {
+			
+			Connection con = Init.getConnection();
+			PreparedStatement posted = con.prepareStatement("UPDATE students SET GradYear = '"+var1+"' WHERE id = '"+var2+"';");
+			posted.executeUpdate();		
+		} catch(Exception e) {System.out.println(e);}
+		finally {
+			System.out.println("UPDATE COMPLETED!");
+		}
+	}
+	
+	//updates first college to database in id location x
+	public static void updateCourse(String name, String loc, String num) throws Exception{
+		final String var1 = name;
+		final String var2 = loc;
+		final String var3 = num;
+		try {
+			
+			Connection con = Init.getConnection();
+			PreparedStatement posted = con.prepareStatement("UPDATE students SET course"+var3+" = '"+var1+"' WHERE id = '"+var2+"';");
+			posted.executeUpdate();		
+		} catch(Exception e) {System.out.println(e);}
+		finally {
+			System.out.println("UPDATE COMPLETED!");
+		}
+	}
+	
+	
 	public static void postStudent(Student std) throws Exception{
 		final String var1 = std.getFirst();
 		final String var2 = std.getLast();
