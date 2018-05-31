@@ -1,12 +1,14 @@
 package com.MasonCasey;
 
 import com.MasonCasey.Database.StudentDB;
+import com.MasonCasey.student.AccountChecks;
 import com.MasonCasey.student.Student;
-import com.MasonCasey.student.StudentMethods;
 import com.vaadin.server.VaadinRequest;
+import com.vaadin.shared.ui.ContentMode;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.Label;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
@@ -18,18 +20,27 @@ import com.vaadin.ui.Window;
 @SpringUI(path="/login")
 public class CreateAccount extends UI {
 	
+	
 	protected void init(VaadinRequest vaadinRequest) {
-
+		
+	
+		
 	//Create a vertical layout 
-		VerticalLayout vertical = new VerticalLayout();
+	VerticalLayout vertical = new VerticalLayout();
     
     
+		
+		
     TextField user  = new TextField("Username"); 
     TextField tf = new TextField("First Name");
     TextField tf2 = new TextField("Last Name");
     TextField tf3 = new TextField("College Email");
     PasswordField password = new PasswordField("Password");
     Button submitButton = new Button("Submit!");
+    
+    user.setMaxLength(15);
+    
+    
     vertical.addComponent(user);
 	vertical.addComponent(tf); // First name of user 
 	vertical.addComponent(tf2); //Last Name of user 
@@ -76,23 +87,40 @@ public class CreateAccount extends UI {
     	student1.setPassword(pass);
     });
     
+
     
     submitButton.addClickListener(clickEvent -> { //Adds new users 
-    	if(StudentMethods.userNameExists(student1.getUsername())) {
-    		
-	    	try {
+    	boolean checked = true;
+    	if(!AccountChecks.userNameExists(student1.getUsername())) {
+    		Notification.show("Username Taken");
+    		checked = false;
+    	}
+    	
+    	if(!AccountChecks.checkUsernameSize(student1.getUsername())) {
+			Notification.show("UserName wrong Size");
+			checked = false;
+		}
+    	
+    	if(!AccountChecks.checkEmailExists(student1.getEmail()) &&
+				!AccountChecks.checkEmailCollege(student1.getEmail())){
+    		Notification.show("Use another Email Address");
+	    	checked = false;
+		}
+    	
+    	if(!AccountChecks.checkPasswordSize(student1.getPassword())) {
+    		Notification.show("Password wrong size");
+    		checked = false;
+    	}
+
+    	if(checked) {
+    		try {
 	    		StudentDB.postStudent(student1);
 			} catch (Exception e) {
 				
 				System.out.println(e);
 			}
 	    	Notification.show("SET");
-    		
-		}else {
-			Notification.show("Username Taken");
-		
-		}
-	
+    	}
 		});
      
     /* 
