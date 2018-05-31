@@ -94,6 +94,27 @@ public class CreateAccount extends UI {
 		}
 	
 		});
+     
+    /* 
+     * 
+     * if(password.contains(pass) && user.contains(user1)) {
+     * password.setText(null);
+     * user.setText(null);
+     * 
+     *  Selection info = Selection(); //we will have to import Selection package (com.CaseyMason.Selecion(Selection)) into this CreateAccount class  
+     *  Selection.main(null);
+     *  info.main(null);
+     * }
+     * 
+     * else 
+     * {
+     *  Notication.show(null, "Incorrect Login", "Login Error", CreateAccount.Error_MESSAGE);
+     *  password.setText(null); 
+     * user.setText(null);
+     * }
+     
+      */
+    
 	}
 }
 		
