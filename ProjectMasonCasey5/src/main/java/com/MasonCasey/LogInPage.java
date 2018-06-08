@@ -14,25 +14,31 @@ import com.vaadin.ui.Button;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
+import com.vaadin.ui.themes.ValoTheme;
 
-@SpringView(name = MainView.VIEW_NAME)
-public class LogInPage implements View {
+@SpringView(name = LogInPage.VIEW_NAME)
+public class LogInPage extends HorizontalLayout implements View {
 
 
-public static final String VIEW_NAME = "LogIn Page";
-HorizontalLayout horizontal = new HorizontalLayout();
-	@PostConstruct
-	void init() {
+public static final String VIEW_NAME = "";
+	
+	LogInPage() {
 		
 	
-	Button joinButton = new Button("JOIN US!");
+	Button joinButton = new Button("JOIN US!", 
+			new Button.ClickListener() {
+				
+				@Override
+				public void buttonClick(com.vaadin.ui.Button.ClickEvent event) {
+					AccountUI.navigator.navigateTo("MainView");
+					
+				}
+			});
 	Button signinButton = new Button("SIGN IN!");
 	
-	horizontal.addComponent(joinButton);
-	horizontal.addComponent(signinButton);
-	
-	horizontal.setComponentAlignment(joinButton, Alignment.MIDDLE_LEFT);
-	horizontal.setComponentAlignment(signinButton, Alignment.MIDDLE_RIGHT);
+	addComponent(joinButton);
+	addComponent(signinButton);
+
 
 
 
@@ -45,4 +51,7 @@ HorizontalLayout horizontal = new HorizontalLayout();
 public void enter(ViewChangeEvent event) {
 
 }
+
+
+
 }
