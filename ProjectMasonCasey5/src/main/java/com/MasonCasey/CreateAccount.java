@@ -95,40 +95,41 @@ setContent(vertical);
     
     submitButton.addClickListener(clickEvent -> { //Adds new users 
     	boolean checked = true;
-    	if(!AccountChecks.userNameExists(student1.getUsername())) {
-    		Notification.show("Username Taken");
-    		checked = false;
-    	}
     	
-    	//Email and User name have specific validators 
-    	Binding<Student, String> userBinding = binder.forField(user)
-    			.withValidator(EmailPredicate, "Must select a username!")
-    			.bind(Student::getUsername, Student::setUsername);
-    	 
-    	Binding<Student, String> tf3Binding = binder.forField(tf3)
-    			.withValidator(EmailPredicate, "Must use a college email!")
-    			.bind(Student::getEmail, Student::setEmail);
+    	//if(!AccountChecks.userNameExists(student1.getUsername())) {
+    	//	Notification.show("Username Taken");
+    	//	checked = false;
+    	//}
     	
-    	//Trigger cross-field validatoion when the other field is changed
-    	user.addValueChangeListener(event -> userBinding.validate());
-    	tf3.addValueChangeListener(event -> tf3Binding.validate());
     	
-    	//First name and last name are required fields 
+    	//First, Last, User, and Email fields are required
+    	
     	tf.setRequiredIndicatorVisible(true);
     	tf2.setRequiredIndicatorVisible(true);
+    	tf3.setRequiredIndicatorVisible(true);
+    	user.setRequiredIndicatorVisible(true);
+    	
     	
     	binder.forField(tf)
     	.withValidator(new StringLengthValidator(
-    			"Please add the first name",1,null))
+    			"Please enter your First name",1,null))
 		.bind(Student::getFirst, Student::setFirst);
     	
 		binder.forField(tf2)
 		.withValidator(new StringLengthValidator(
-    			"Please add the last name",1,null))
+    			"Please enter your Last name",1,null))
 		.bind(Student::getLast, Student::setLast);
     
-		
-		
+		binder.forField(tf3)
+    	.withValidator(new StringLengthValidator(
+    			"Must enter a valid college email",1,null))
+		.bind(Student::getEmail, Student::setEmail);
+    	
+		binder.forField(user)
+		.withValidator(new StringLengthValidator(
+    			"Must enter in a username",1,null))
+		.bind(Student::getUsername, Student::setUsername);
+		/*		
     	if(!AccountChecks.checkUsernameSize(student1.getUsername())) {
 			Notification.show("UserName wrong Size");
 			checked = false;
@@ -159,9 +160,9 @@ setContent(vertical);
     	submitButton.addAttachListener(event -> getNavigator().navigateTo(""));
 		});
     
-    
+   
      
-    /* 
+    
      * 
      * if(password.contains(pass) && user.contains(user1)) {
      * password.setText(null);
@@ -180,7 +181,7 @@ setContent(vertical);
      * }
      
       */
-    
+    });
 	}
 }
 		
