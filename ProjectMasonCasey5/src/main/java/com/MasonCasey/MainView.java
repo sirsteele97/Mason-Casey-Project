@@ -25,10 +25,11 @@ import com.vaadin.ui.VerticalLayout;
 
 @SpringView(name = MainView.VIEW_NAME)
 public class MainView extends VerticalLayout implements View{
-	public static final String VIEW_NAME = "";
+	public static final String VIEW_NAME = "MainView";
 	
-	@PostConstruct
-	void init() {
+	
+	
+	MainView() {
 		
 		
 		Student student1 = new Student();	
@@ -45,7 +46,15 @@ public class MainView extends VerticalLayout implements View{
 	TextField tf2 = new TextField("Last Name");
 	TextField tf3 = new TextField("College Email");
 	PasswordField password = new PasswordField("Password");
-	Button submitButton = new Button("Submit!");
+	Button submitButton = new Button("Submit", 
+			new Button.ClickListener() {
+				
+				@Override
+				public void buttonClick(com.vaadin.ui.Button.ClickEvent event) {
+					AccountUI.navigator.navigateTo("CreateAccount2");
+					
+				}
+			});
 
 	user.setMaxLength(15);
 
@@ -128,7 +137,7 @@ public class MainView extends VerticalLayout implements View{
 	    	
 	    	//First, Last, User, and Email fields are required
 	    	
-
+	    	
 				
 	    	if(!AccountChecks.checkUsernameSize(student1.getUsername())) {
 				Notification.show("UserName wrong Size");
@@ -156,7 +165,7 @@ public class MainView extends VerticalLayout implements View{
 				}
 		    	Notification.show("SET");
 	   
-	    	
+
 		}
 	    });
 	    

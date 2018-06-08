@@ -13,9 +13,11 @@ import com.vaadin.navigator.ViewDisplay;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.spring.annotation.SpringViewDisplay;
+import com.vaadin.spring.navigator.SpringNavigator;
 import com.vaadin.spring.navigator.SpringViewProvider;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Component;
+import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
@@ -28,7 +30,10 @@ public class AccountUI extends UI implements ViewDisplay{
 	
 	
 	static Navigator navigator;
-	protected static final String MAINVIEW = "mainview";
+
+	static String thisView;
+	
+	protected static final String MAINVIEW = "main";
 	
 	@Autowired
 	SpringViewProvider viewProvider;
@@ -40,11 +45,28 @@ public class AccountUI extends UI implements ViewDisplay{
 		root.setSizeFull();
 		setContent(root);
 		
+		getPage().setTitle("Page title");
+		
+
         springViewDisplay = new Panel();
         springViewDisplay.setSizeFull();
         springViewDisplay.setStyleName(ValoTheme.PANEL_BORDERLESS);
+        
+        
+        
+		navigator = new Navigator(this, (ComponentContainer) getContent());
+		
+		navigator.addProvider(viewProvider);
+		navigator.addView("MainView", new MainView());
+		navigator.addView("", new LogInPage());
+		navigator.addView("CreateAccount2", new CreateAccount2());
+		
         root.addComponent(springViewDisplay);
         root.setExpandRatio(springViewDisplay, 1.0f);
+        
+        
+        
+        root.addComponent(createNavigationButton("next", "example5"));
 	}
 	
 	
