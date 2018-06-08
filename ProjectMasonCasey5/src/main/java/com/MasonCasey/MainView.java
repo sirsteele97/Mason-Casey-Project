@@ -128,7 +128,9 @@ public class MainView extends VerticalLayout implements View{
 	    
 	    submitButton.addClickListener(clickEvent -> { //Adds new users 
 	    	boolean checked = true;
-	    	
+	    });
+	}
+	    	/*	
 	    	//if(!AccountChecks.userNameExists(student1.getUsername())) {
 	    	//	Notification.show("Username Taken");
 	    	//	checked = false;
@@ -138,7 +140,7 @@ public class MainView extends VerticalLayout implements View{
 	    	//First, Last, User, and Email fields are required
 	    	
 	    	
-				
+			
 	    	if(!AccountChecks.checkUsernameSize(student1.getUsername())) {
 				Notification.show("UserName wrong Size");
 				checked = false;
@@ -170,7 +172,7 @@ public class MainView extends VerticalLayout implements View{
 	    });
 	    
 	}
-
+*/
 	
 	
 	
