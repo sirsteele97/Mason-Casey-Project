@@ -15,7 +15,7 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
 
-@SpringView(name = MainView.VIEW_NAME)
+@SpringView(name = LogInPage.VIEW_NAME)
 public class LogInPage implements View {
 
 
