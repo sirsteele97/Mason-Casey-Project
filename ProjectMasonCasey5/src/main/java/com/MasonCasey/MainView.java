@@ -11,6 +11,7 @@ import com.vaadin.data.validator.StringLengthValidator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.SerializablePredicate;
+import com.vaadin.shared.ui.ValueChangeMode;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
@@ -39,6 +40,7 @@ public class MainView extends VerticalLayout implements View{
 		
 		
 	TextField user  = new TextField("Username"); 
+	user.setValueChangeMode(ValueChangeMode.EAGER);
 	TextField tf = new TextField("First Name");
 	TextField tf2 = new TextField("Last Name");
 	TextField tf3 = new TextField("College Email");
@@ -61,7 +63,31 @@ public class MainView extends VerticalLayout implements View{
 	setComponentAlignment(password, Alignment.MIDDLE_CENTER);
 	setComponentAlignment(submitButton, Alignment.BOTTOM_RIGHT);
 
+	tf.setRequiredIndicatorVisible(true);
+	tf2.setRequiredIndicatorVisible(true);
+	tf3.setRequiredIndicatorVisible(true);
+	user.setRequiredIndicatorVisible(true);
+	
+	
+	binder.forField(tf)
+	.withValidator(new StringLengthValidator(
+			"Please enter your First name",1,null))
+	.bind(Student::getFirst, Student::setFirst);
+	
+	binder.forField(tf2)
+	.withValidator(new StringLengthValidator(
+			"Please enter your Last name",1,null))
+	.bind(Student::getLast, Student::setLast);
 
+	binder.forField(tf3)
+	.withValidator(new StringLengthValidator(
+			"Must enter a valid college email",1,null))
+	.bind(Student::getEmail, Student::setEmail);
+	
+	binder.forField(user)
+	.withValidator(new StringLengthValidator(
+			"Must enter in a username",1,null))
+	.bind(Student::getUsername, Student::setUsername);
 
 	    tf.addValueChangeListener(event -> { //Enter First Name 
 	    	String firstName = event.getValue();
@@ -102,31 +128,7 @@ public class MainView extends VerticalLayout implements View{
 	    	
 	    	//First, Last, User, and Email fields are required
 	    	
-	    	tf.setRequiredIndicatorVisible(true);
-	    	tf2.setRequiredIndicatorVisible(true);
-	    	tf3.setRequiredIndicatorVisible(true);
-	    	user.setRequiredIndicatorVisible(true);
-	    	
-	    	
-	    	binder.forField(tf)
-	    	.withValidator(new StringLengthValidator(
-	    			"Please enter your First name",1,null))
-			.bind(Student::getFirst, Student::setFirst);
-	    	
-			binder.forField(tf2)
-			.withValidator(new StringLengthValidator(
-	    			"Please enter your Last name",1,null))
-			.bind(Student::getLast, Student::setLast);
-	    
-			binder.forField(tf3)
-	    	.withValidator(new StringLengthValidator(
-	    			"Must enter a valid college email",1,null))
-			.bind(Student::getEmail, Student::setEmail);
-	    	
-			binder.forField(user)
-			.withValidator(new StringLengthValidator(
-	    			"Must enter in a username",1,null))
-			.bind(Student::getUsername, Student::setUsername);
+
 				
 	    	if(!AccountChecks.checkUsernameSize(student1.getUsername())) {
 				Notification.show("UserName wrong Size");
