@@ -10,7 +10,7 @@ import com.vaadin.ui.VerticalLayout;
 
 @SpringView(name = StartView.VIEW_NAME)
 public class StartView extends VerticalLayout implements View{
-    public static final String VIEW_NAME = "";
+    public static final String VIEW_NAME = "start";
 
     @PostConstruct
     void init() {

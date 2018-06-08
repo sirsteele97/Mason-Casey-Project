@@ -1,5 +1,9 @@
 package com.MasonCasey;
-/*
+
+
+
+import com.vaadin.ui.themes.ValoTheme;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.vaadin.annotations.Theme;
@@ -12,15 +16,17 @@ import com.vaadin.spring.annotation.SpringViewDisplay;
 import com.vaadin.spring.navigator.SpringViewProvider;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Component;
-import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
-import com.vaadin.ui.themes.ValoTheme;
+
+
 @Theme("valo")
 @SpringViewDisplay
-@SpringUI(path="/example")
-public class AccountCreationUI extends UI implements ViewDisplay{
+@SpringUI(path="/example3")
+public class AccountUI extends UI implements ViewDisplay{
+	
+	
 	static Navigator navigator;
 	protected static final String MAINVIEW = "mainview";
 	
@@ -30,24 +36,17 @@ public class AccountCreationUI extends UI implements ViewDisplay{
 	
 	@Override
 	protected void init(VaadinRequest request) {
-        final VerticalLayout root = new VerticalLayout();
-        root.setSizeFull();
-        setContent(root);
-        
-        final CssLayout navigationBar = new CssLayout();
-        navigationBar.addStyleName(ValoTheme.LAYOUT_COMPONENT_GROUP);
-        navigationBar.addComponent(createNavigationButton("View Scoped View",
-                MainView.VIEW_NAME));
-        navigationBar.addComponent(createNavigationButton("Go back",
-                StartView.VIEW_NAME));
-        root.addComponent(navigationBar);
-
+		final VerticalLayout root = new VerticalLayout();
+		root.setSizeFull();
+		setContent(root);
+		
         springViewDisplay = new Panel();
         springViewDisplay.setSizeFull();
+        springViewDisplay.setStyleName(ValoTheme.PANEL_BORDERLESS);
         root.addComponent(springViewDisplay);
         root.setExpandRatio(springViewDisplay, 1.0f);
-
 	}
+	
 	
     private Button createNavigationButton(String caption, final String viewName) {
         Button button = new Button(caption);
@@ -63,6 +62,5 @@ public class AccountCreationUI extends UI implements ViewDisplay{
 		springViewDisplay.setContent((Component) view);
 		
 	}
-}
 
-*/
+}
