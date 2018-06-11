@@ -21,6 +21,7 @@ public class AccountChecks {
 		
 	}
 	
+	
 	public static boolean checkUsernameSize(String user) {
 		boolean isTrue = false;
 		if(user.length() > 5 && user.length() < 20) {

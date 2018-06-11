@@ -25,7 +25,7 @@ import com.vaadin.ui.VerticalLayout;
 
 @Theme("valo")
 @SpringViewDisplay
-@SpringUI(path="/example3")
+@SpringUI(path="/test")
 public class AccountUI extends UI implements ViewDisplay{
 	
 	
@@ -60,25 +60,17 @@ public class AccountUI extends UI implements ViewDisplay{
 		navigator.addView("MainView", new MainView());
 		navigator.addView("", new LogInPage());
 		navigator.addView("CreateAccount2", new CreateAccount2());
-		
+		navigator.addView("SignIn", new SignInPage());
+		navigator.addView("ApplicationEnterTest", new ApplicationEnterTest());
         root.addComponent(springViewDisplay);
         root.setExpandRatio(springViewDisplay, 1.0f);
         
         
         
-        root.addComponent(createNavigationButton("next", "example5"));
+        
 	}
 	
 	
-    private Button createNavigationButton(String caption, final String viewName) {
-        Button button = new Button(caption);
-        button.addStyleName(ValoTheme.BUTTON_SMALL);
-        // If you didn't choose Java 8 when creating the project, convert this
-        // to an anonymous listener class
-        button.addClickListener(event -> getUI().getNavigator().navigateTo(viewName));
-        return button;
-    }
-
 	@Override
 	public void showView(View view) {
 		springViewDisplay.setContent((Component) view);

@@ -174,5 +174,20 @@ public class StudentDB {
 		return num;
 	}
 
-
+	public static String getPasswordByUser(String user) {
+		final String var1 = user;
+		try {
+			Connection con = Init.getConnection();
+			PreparedStatement statement = con.prepareStatement("SELECT Password FROM students WHERE Username ='"+var1+"'");
+			ResultSet result = statement.executeQuery();
+			if(result.next()) {
+				return result.getString(1);
+			}
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		return null;
+		
+	}
 }
