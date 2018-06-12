@@ -29,8 +29,10 @@ public class CreateAccount2 extends VerticalLayout implements View{
 						"2022");
 				
 				ListSelect<String> semesterStrings = new ListSelect<>("Current Semester");
-				semesterStrings.setItems("1st Semester", "2nd Semester");
-				semesterStrings.setRows(3);
+				semesterStrings.setItems("Fall Semster", "Spring Semester",
+						"Summer Semester","1st Quarter"
+						, "2nd Quarter", "3rd Quarter", "4th Quarter");
+				semesterStrings.setRows(5);
 				
 				
 	
@@ -88,7 +90,7 @@ public class CreateAccount2 extends VerticalLayout implements View{
 							}
 						});
 			    addComponent(submitButton);
-			    setComponentAlignment(submitButton, Alignment.BOTTOM_RIGHT);
+			    setComponentAlignment(submitButton, Alignment.TOP_RIGHT);
 			    
 			    
 				
