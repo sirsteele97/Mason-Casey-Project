@@ -1,25 +1,13 @@
 package com.MasonCasey;
 
-import javax.annotation.PostConstruct;
-
-import com.MasonCasey.Database.StudentDB;
-import com.MasonCasey.student.AccountChecks;
-import com.MasonCasey.student.Student;
-import com.vaadin.data.Binder;
-import com.vaadin.data.validator.StringLengthValidator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
-import com.vaadin.server.SerializablePredicate;
-import com.vaadin.server.VaadinRequest;
-import com.vaadin.shared.ui.ValueChangeMode;
-import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
-import com.vaadin.ui.Notification;
-import com.vaadin.ui.PasswordField;
+import com.vaadin.ui.ComboBox;
+import com.vaadin.ui.ListSelect;
 import com.vaadin.ui.TextField;
-import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
 @SpringView(name = CreateAccount2.VIEW_NAME)
@@ -28,32 +16,71 @@ public class CreateAccount2 extends VerticalLayout implements View{
 			
 			
 			CreateAccount2() {
-
-
-			    TextField user  = new TextField("Hi"); 
-			    TextField tf = new TextField("Mason");
-			    TextField tf2 = new TextField("Mordue");
-			    TextField tf3 = new TextField("is");
-			    PasswordField password = new PasswordField("Awesome");
-			    Button submitButton = new Button("Submit!");
-			    
-			    user.setMaxLength(15);
-			    
-			    
-			    addComponent(user);
-				addComponent(tf); // First name of user 
-				addComponent(tf2); //Last Name of user 
-				addComponent(tf3); // College Email of user 
-				addComponent(password); //encrypted password for user 
-				addComponent(submitButton); //sends users to the select college & major's page 
-			    setComponentAlignment(user, Alignment.TOP_CENTER);
-			    setComponentAlignment(tf, Alignment.MIDDLE_CENTER);
-			    setComponentAlignment(tf2, Alignment.MIDDLE_CENTER);
-			    setComponentAlignment(tf3, Alignment.MIDDLE_CENTER);
-			    setComponentAlignment(password, Alignment.MIDDLE_CENTER);
-			    setComponentAlignment(submitButton, Alignment.BOTTOM_RIGHT);
+				
 				
 
+				ComboBox<String> comboBox = new ComboBox<>("College Attending");
+				comboBox.setItems("University of Cincinnati", "Ohio State University",
+						"Kent State University");
+				
+				ComboBox<String> gradBox = new ComboBox<>("Graduation Year");
+				gradBox.setItems("2020", "2021",
+						"2022");
+				
+				ListSelect<String> semesterStrings = new ListSelect<>("Current Semester");
+				semesterStrings.setItems("1st Semester", "2nd Semester");
+				semesterStrings.setRows(3);
+				
+				
+	
+			    
+			    addComponent(comboBox); //User's College
+				addComponent(gradBox); // User's graduation year
+				addComponent(semesterStrings); //User's current semester 
+			    setComponentAlignment(comboBox, Alignment.TOP_CENTER);
+			    setComponentAlignment(gradBox, Alignment.TOP_RIGHT);
+			   setComponentAlignment(semesterStrings, Alignment.TOP_LEFT);
+			 
+			   
+			   TextField textField1 = new TextField(); 
+			   textField1.setCaption("List your courses");
+			   textField1.setPlaceholder("Course 1");
+			   
+			   TextField textField2 = new TextField(); 
+			   textField2.setPlaceholder("Course 2");
+			   
+			   TextField textField3 = new TextField(); 
+			   textField3.setPlaceholder("Course 3");
+			   
+			   TextField textField4 = new TextField(); 
+			   textField4.setPlaceholder("Course 4");
+			   
+			   TextField textField5 = new TextField(); 
+			   textField5.setPlaceholder("Course 5");
+			   
+			   TextField textField6 = new TextField(); 
+			   textField6.setPlaceholder("Course 6");
+				
+			   addComponent(textField1);
+			   addComponent(textField2);
+			   addComponent(textField3);
+			   addComponent(textField4);
+			   addComponent(textField5);
+			   addComponent(textField6);
+			   
+			   
+			   setComponentAlignment(textField1, Alignment.MIDDLE_CENTER);
+			   setComponentAlignment(textField2, Alignment.MIDDLE_CENTER);
+			   setComponentAlignment(textField3, Alignment.MIDDLE_CENTER);
+			   setComponentAlignment(textField4, Alignment.MIDDLE_CENTER);
+			   setComponentAlignment(textField5, Alignment.MIDDLE_CENTER);
+			   setComponentAlignment(textField6, Alignment.MIDDLE_CENTER);
+			   
+			   
+			    Button submitButton = new Button("Submit!");
+			    addComponent(submitButton);
+			    setComponentAlignment(submitButton, Alignment.BOTTOM_RIGHT);
+			    
 			    
 				
 				}
