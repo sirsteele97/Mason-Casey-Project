@@ -55,7 +55,15 @@ public class MainView extends VerticalLayout implements View{
 					
 				}
 			});
-
+	Button signinButton = new Button("Sign In", 
+			new Button.ClickListener() {
+		
+		@Override
+		public void buttonClick(com.vaadin.ui.Button.ClickEvent event) {
+			AccountUI.navigator.navigateTo("SignIn");
+			
+		}
+	});
 	user.setMaxLength(15);
 
 
@@ -65,12 +73,14 @@ public class MainView extends VerticalLayout implements View{
 	addComponent(tf3); // College Email of user 
 	addComponent(password); //encrypted password for user 
 	addComponent(submitButton); //sends users to the select college & major's page 
+	addComponent(signinButton); //sends users to the sign in page from 
 	setComponentAlignment(user, Alignment.TOP_CENTER);
 	setComponentAlignment(tf, Alignment.MIDDLE_CENTER);
 	setComponentAlignment(tf2, Alignment.MIDDLE_CENTER);
 	setComponentAlignment(tf3, Alignment.MIDDLE_CENTER);
 	setComponentAlignment(password, Alignment.MIDDLE_CENTER);
 	setComponentAlignment(submitButton, Alignment.BOTTOM_RIGHT);
+	setComponentAlignment(signinButton, Alignment.BOTTOM_LEFT);
 
 	tf.setRequiredIndicatorVisible(true);
 	tf2.setRequiredIndicatorVisible(true);

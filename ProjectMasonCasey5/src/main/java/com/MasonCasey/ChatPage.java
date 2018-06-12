@@ -26,7 +26,7 @@ public class ChatPage extends VerticalLayout implements View{
 					
 					@Override
 					public void buttonClick(com.vaadin.ui.Button.ClickEvent event) {
-						AccountUI.navigator.navigateTo("SignIn");
+						AccountUI.navigator.navigateTo("MainView");
 						
 					}
 				});
