@@ -3,8 +3,11 @@ package com.MasonCasey;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.spring.annotation.SpringView;
+import com.vaadin.ui.Alignment;
+import com.vaadin.ui.Button;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.Button.ClickEvent;
 
 @SpringView(name = ChatPage.VIEW_NAME)
 public class ChatPage extends VerticalLayout implements View{
@@ -18,6 +21,18 @@ public class ChatPage extends VerticalLayout implements View{
 		
 		addComponent(textField);
 		
+		Button button = new Button("Sign Out",
+				new Button.ClickListener() {
+					
+					@Override
+					public void buttonClick(com.vaadin.ui.Button.ClickEvent event) {
+						AccountUI.navigator.navigateTo("SignIn");
+						
+					}
+				});
+		
+		addComponent(button);
+		setComponentAlignment(button, Alignment.MIDDLE_CENTER);
 		
 	}
 	 @Override
