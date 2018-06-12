@@ -9,6 +9,7 @@ import com.vaadin.ui.ComboBox;
 import com.vaadin.ui.ListSelect;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.Button.ClickEvent;
 
 @SpringView(name = CreateAccount2.VIEW_NAME)
 public class CreateAccount2 extends VerticalLayout implements View{
@@ -77,7 +78,15 @@ public class CreateAccount2 extends VerticalLayout implements View{
 			   setComponentAlignment(textField6, Alignment.MIDDLE_CENTER);
 			   
 			   
-			    Button submitButton = new Button("Submit!");
+			    Button submitButton = new Button("Submit!", 
+			    		new Button.ClickListener() {
+							
+							@Override
+							public void buttonClick(com.vaadin.ui.Button.ClickEvent event) {
+								AccountUI.navigator.navigateTo("ChatPage");
+								
+							}
+						});
 			    addComponent(submitButton);
 			    setComponentAlignment(submitButton, Alignment.BOTTOM_RIGHT);
 			    
