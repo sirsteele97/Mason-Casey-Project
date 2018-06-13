@@ -13,7 +13,6 @@ import com.vaadin.navigator.ViewDisplay;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.spring.annotation.SpringViewDisplay;
-import com.vaadin.spring.navigator.SpringNavigator;
 import com.vaadin.spring.navigator.SpringViewProvider;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Component;
@@ -42,6 +41,9 @@ public class AccountUI extends UI implements ViewDisplay{
 	@Override
 	protected void init(VaadinRequest request) {
 		final VerticalLayout root = new VerticalLayout();
+		
+		
+		
 		root.setSizeFull();
 		setContent(root);
 		
@@ -62,6 +64,7 @@ public class AccountUI extends UI implements ViewDisplay{
 		navigator.addView("CreateAccount2", new CreateAccount2());
 		navigator.addView("SignIn", new SignInPage());
 		navigator.addView("ApplicationEnterTest", new ApplicationEnterTest());
+		navigator.addView("AdminViewer", new AdminViewer());
         root.addComponent(springViewDisplay);
         root.setExpandRatio(springViewDisplay, 1.0f);
         

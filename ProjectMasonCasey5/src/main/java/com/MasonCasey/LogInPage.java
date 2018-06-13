@@ -35,11 +35,21 @@ public static final String VIEW_NAME = "";
 			
 		}
 	});
+	
+	Button admin = new Button("admin", 
+			new Button.ClickListener() {
+		
+		@Override
+		public void buttonClick(com.vaadin.ui.Button.ClickEvent event) {
+			AccountUI.navigator.navigateTo("AdminViewer");
+			
+		}
+	});
 
 
 	addComponent(joinButton);
 	addComponent(signinButton);
-
+	addComponent(admin);
 
 	
 }
