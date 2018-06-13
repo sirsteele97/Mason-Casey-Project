@@ -27,7 +27,7 @@ import com.vaadin.ui.VerticalLayout;
 public class MainView extends VerticalLayout implements View{
 	public static final String VIEW_NAME = "MainView";
 	
-	private Boolean checked = true;
+	
 	
 	MainView() {
 		
@@ -46,10 +46,15 @@ public class MainView extends VerticalLayout implements View{
 	TextField tf2 = new TextField("Last Name");
 	TextField tf3 = new TextField("College Email");
 	PasswordField password = new PasswordField("Password");
-
-	Button submitButton = new Button("Submit");
-
-
+	Button submitButton = new Button("Submit", 
+			new Button.ClickListener() {
+				
+				@Override
+				public void buttonClick(com.vaadin.ui.Button.ClickEvent event) {
+					AccountUI.navigator.navigateTo("CreateAccount2");
+					
+				}
+			});
 	Button signinButton = new Button("Sign In", 
 			new Button.ClickListener() {
 		
@@ -59,7 +64,6 @@ public class MainView extends VerticalLayout implements View{
 			
 		}
 	});
-
 	user.setMaxLength(15);
 
 
@@ -134,11 +138,11 @@ public class MainView extends VerticalLayout implements View{
 	    
 	    submitButton.addClickListener(clickEvent -> { //Adds new users 
 	    	boolean checked = true;
-	    
+	    });
 	
-	    	
+/*	    		
 	    	if(!AccountChecks.userNameExists(student1.getUsername())) {
-	    		System.out.println("Username Taken");
+	    		Notification.show("Username Taken");
 	    		checked = false;
 	    	}
 	    	
@@ -148,25 +152,25 @@ public class MainView extends VerticalLayout implements View{
 	    	
 			
 	    	if(!AccountChecks.checkUsernameSize(student1.getUsername())) {
-	    		System.out.println("UserName wrong Size");
+				Notification.show("UserName wrong Size");
 				checked = false;
 			}
 	    	
 	    	if(!AccountChecks.checkEmailExists(student1.getEmail()) ||
 					!AccountChecks.checkEmailCollege(student1.getEmail())){
-	    		System.out.println("Use another Email Address");
+	    		Notification.show("Use another Email Address");
 		    	checked = false;
 			}
 	    	
 	    	if(!AccountChecks.checkPasswordSize(student1.getPassword())) {
-	    		System.out.println("Password wrong size");
+	    		Notification.show("Password wrong size");
 	    		checked = false;
 	    	}
 
 	    	if(checked) {
 	    		try {
 		    		StudentDB.postStudent(student1);
-		    		AccountUI.navigator.navigateTo("CreateAccount2");
+		    		
 				} catch (Exception e) {
 					
 					System.out.println(e);
@@ -174,12 +178,21 @@ public class MainView extends VerticalLayout implements View{
 		    	Notification.show("SET");
 	   
 
-		}
-	    });
+	    	}
 	    
 	}
+}
 
+*/
+	    
+	}
+}
 	
+
+
+
+
+
 	
 	
 	
@@ -327,9 +340,10 @@ public class MainView extends VerticalLayout implements View{
 	});
 		  
 }
-*/
+
     @Override
     public void enter(ViewChangeEvent event) {
 
     }
 }
+*/
