@@ -21,6 +21,7 @@ import com.vaadin.ui.Notification;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
+import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
 @SpringView(name = MainView.VIEW_NAME)
@@ -31,6 +32,10 @@ public class MainView extends VerticalLayout implements View{
 	
 	MainView() {
 		
+		
+		UI.getCurrent().getPage().getStyles().add(
+				"."
+				);
 		
 		Student student1 = new Student();	
 		
