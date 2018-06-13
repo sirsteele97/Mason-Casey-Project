@@ -8,6 +8,7 @@ import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.FormLayout;
+import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
 
 @SpringView(name = SignInPage.VIEW_NAME)
@@ -24,12 +25,18 @@ public class SignInPage extends FormLayout implements View {
 	SignInPage(){
 		
 		TextField username = new TextField("Username:");
-		TextField password = new TextField("Password");
+		PasswordField password = new PasswordField("Password");
+		
 		
 		Button submit = new Button("Submit",
 				new Button.ClickListener(){
 
-					@Override
+			public void buttonClick1(com.vaadin.ui.Button.ClickEvent event) {
+				AccountUI.navigator.navigateTo("ChatPage");
+				
+			}
+		
+				
 					public void buttonClick(ClickEvent event) {
 						if(!AccountChecks.userNameExists(getUsername())) {
 							if(getPassword().equals(StudentDB.getPasswordByUser(getUsername()))) {
@@ -45,6 +52,7 @@ public class SignInPage extends FormLayout implements View {
 						
 					}
 		});
+		
 		
 		
 		addComponent(username);
@@ -101,4 +109,6 @@ public class SignInPage extends FormLayout implements View {
 	public void setUsername(String username) {
 		this.username = username;
 	}
+	
 }
+
