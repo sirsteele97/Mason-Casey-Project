@@ -20,30 +20,35 @@ public class CreateAccount2 extends VerticalLayout implements View{
 				
 				
 
-				ComboBox<String> comboBox = new ComboBox<>("College Attending");
+				ComboBox<String> comboBox = new ComboBox<>("");
 				comboBox.setItems("University of Cincinnati", "Ohio State University",
 						"Kent State University");
+				comboBox.setPlaceholder("College Attending");
 				
-				ComboBox<String> gradBox = new ComboBox<>("Graduation Year");
+				ComboBox<String> gradBox = new ComboBox<>("");
 				gradBox.setItems("2020", "2021",
 						"2022");
+				gradBox.setPlaceholder("Graduation Year");
 				
-				ListSelect<String> semesterStrings = new ListSelect<>("Current Semester");
+				ComboBox<String> semesterStrings = new ComboBox<>("");
 				semesterStrings.setItems("Fall Semster", "Spring Semester",
 						"Summer Semester","1st Quarter"
 						, "2nd Quarter", "3rd Quarter", "4th Quarter");
-				semesterStrings.setRows(5);
+				semesterStrings.setTextInputAllowed(false);
+				semesterStrings.setPlaceholder("Current Semester");
 				
+				TextField majorField = new TextField();
+				majorField.setPlaceholder("Enter in your Major");
 				
-	
 			    
 			    addComponent(comboBox); //User's College
 				addComponent(gradBox); // User's graduation year
 				addComponent(semesterStrings); //User's current semester 
+				addComponent(majorField);//User's enter in their major 
 			    setComponentAlignment(comboBox, Alignment.TOP_CENTER);
 			    setComponentAlignment(gradBox, Alignment.TOP_RIGHT);
 			   setComponentAlignment(semesterStrings, Alignment.TOP_LEFT);
-			 
+			   setComponentAlignment(majorField, Alignment.MIDDLE_LEFT);
 			   
 			   TextField textField1 = new TextField(); 
 			   textField1.setCaption("List your courses");
