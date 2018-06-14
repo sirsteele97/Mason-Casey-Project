@@ -8,6 +8,7 @@ import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.navigator.ViewDisplay;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.spring.navigator.SpringViewProvider;
+import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.Label;
@@ -15,6 +16,7 @@ import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.MenuBar.MenuItem;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.themes.ValoTheme;
 
 @SpringView(name = AdminViewer.VIEW_NAME)
@@ -51,12 +53,23 @@ public class AdminViewer extends VerticalLayout implements  View, ViewDisplay {
         admin.addItem("Admin Users");
         admin.addItem("Settings");
         
+        //Takes us out of the AdminViewer 
+        Button button1 = new Button("Return to home page",
+        		new Button.ClickListener() {
+					
+					@Override
+					public void buttonClick(com.vaadin.ui.Button.ClickEvent event) {
+						AccountUI.navigator.navigateTo("");
+					}
+				});
+        
         springViewDisplay = new Panel();
         springViewDisplay.setSizeFull();
         springViewDisplay.setStyleName(ValoTheme.PANEL_BORDERLESS);
         
        
-
+        addComponent(button1);
+        setComponentAlignment(button1, Alignment.MIDDLE_LEFT);
         addComponent(springViewDisplay);
         setExpandRatio(springViewDisplay, 1.0f);
         
